@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Busqueda de Vue / Semantic / Firebase</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+
+</head>
+<body>
+<div class="ui container">
+	<div class="ui search">
+	  <div class="ui icon input">
+	    <input class="prompt" type="text" placeholder="Buscar...">
+	    <i class="search icon"></i>
+	  </div>
+
+
+	  <div class="results"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$('.ui.search')
+  .search({
+    minCharacters : 2,
+    apiSettings: {
+      url: 'https://api.github.com/search/repositories?q={query}'
+    },
+    fields: {
+      results : 'items',
+      title   : 'name',
+      url     : 'html_url'
+    }
+  })
+;
+</script>
+</body>
+</html>
